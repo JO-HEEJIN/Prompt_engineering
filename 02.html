@@ -1,0 +1,359 @@
+
+
+<!--
+<html lang="zh-CN"> 
+-->
+<html>
+
+<head>
+<META HTTP-EQUIV="Context-Type" 
+ CONTEXT="text/html;charset=windows-1252"
+>
+<!--
+<meta name="description/generator" content=" " >
+<meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<title>Mind Map vs. Tree of Thought</title>
+<style type="text/css"> .myLoadStyle { width:1px; height:1px; } </style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+<!-- inline spoiler http://www.jsblogstop.com/2011/04/add-spoilers-to-your-website.html -->
+<script src="http://jsblogstop-blogger-feed-tools.googlecode.com/svn/trunk/js-spoilers.js"></script>
+<style type='text/css'>
+ .block-spoiler { color: #993333; }
+        .block-spoiler-toggle { cursor: pointer;}
+ .inline-spoiler-toggle { cursor: pointer;}
+ .redac-text {
+   color: #000000;
+   background-color: #000000;
+ }
+ .redac-text:hover {
+   background-color: #ffffff;
+ }
+ div.spoiler-text {
+   display: none;
+   padding: 0px 10px;
+ }
+ span.spoiler-text {
+   display: none;
+   padding: 0px 5px;
+ }
+</style>
+
+
+<style>
+/*
+In this example, the first media query applies when the screen width is less than or equal to 768px (iPad portrait mode) and the second media query applies when the screen width is less than or equal to 1024px (iPad landscape mode). The orientation property is used to target the specific device orientation. The border-radius of the table cells is set to 10px in both cases, giving them a rounded appearance. You can adjust the max-width values and border-radius value to customize the behavior for your specific use case.
+*/
+/* Add a border-radius to table cells */
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Reduce the border-radius when the screen width is less than or equal to 768px (iPad portrait mode) */
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  td {
+    border-radius: 10px;
+  }
+}
+/* Reduce the border-radius when the screen width is less than or equal to 1024px (iPad landscape mode) */
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  td {
+    border-radius: 10px;
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<center><a href=""><h1>Mind Map vs. Tree of Thought</h1></a></center>
+<!--
+
+<center>
+<div id="google_translate_element"></div><script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</center>
+
+
+
+<center>
+<div id="google_translate_element_en"></div>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: '{Language=en}',
+    sectionalNodeClassName: 'goog-trans-section',
+    controlNodeClassName: 'goog-trans-control',
+    background: '#f4fa58'
+  }, 'google_translate_element_en');
+}
+</script><script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
+</center>
+
+
+<center><h1>Example</h1></center>
+<center><a href="Example.jpg" class="image" title="Title"><img alt="" src="Example.jpg" height="300" width="400" border="0" align=middle class="thumbimage" /></a></center>
+<center><a href="Example.jpg" class="image" title="Title"><img alt="" src="Example.jpg" border="0" align=middle class="thumbimage" /></a></center>
+<a href="Example.jpg" class="image" title="Title"><img alt="" src="Example.jpg" border="0" align=middle class="thumbimage" /></a>
+-->
+
+<table border=1 width=1000>
+  <tr>
+    <th>ID</th>
+    <th>Aspect</th>
+    <th>Mind Mapping Prompt</th>
+    <th>Tree of Thought Prompt</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Central Concept</td>
+    <td>
+      <ul>
+
+<font color=blue><h3>
+        <li><font color=red>Focus</font> on <font color=red>visualizing</font> <font color=red>key</font> <font color=red>elements</font></li>
+        <li>Use <font color=red>branches</font> to <font color=red>represent</font> <font color=red>relationships</font></li>
+</h3></font>
+      </ul>
+    </td>
+    <td>
+      <ul>
+<font color=blue><h3>
+        <li><font color=red>Focus</font> on <font color=red>logical</font> <font color=red>hierarchy</font></li>
+        <li>Use <font color=red>nodes</font> to <font color=red>represent</font> <font color=red>steps</font> or <font color=red>choices</font></li>
+</h3></font>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Structure</td>
+    <td>
+      <ul>
+        <li>Central <font color=red>theme</font> with <font color=red>branches</font></li>
+        <li><font color=red>Sub-branches</font> for <font color=red>details</font></li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><font color=red>Root</font> <font color=red>node</font> with <font color=red>child</font> <font color=red>nodes</font></li>
+        <li><font color=red>Leaf</font> <font color=red>nodes</font> for <font color=red>specifics</font></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Approach</td>
+    <td>
+      <ul>
+        <li>Start with a broad <font color=red>idea</font></li>
+        <li>Narrow down to <font color=red>details</font></li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Start with a specific <font color=red>question</font> or <font color=red>problem</font></li>
+        <li>Explore <font color=red>options</font> or <font color=red>solutions</font></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Visualization</td>
+    <td>
+      <ul>
+
+<font color=blue><h3>
+        <li><font color=red>Flower</font> shape
+        <li><font color=red>Diagrammatic</font></li>
+        <li><font color=red>Branches</font> and <font color=red>sub-branches</font> <font color=red>radiate</font> from the <font color=red>center</font></li>
+</h3></font>
+      </ul>
+<p>
+<TABLE ALIGN=ABSLEFT BORDER=1 CELLSPACING=1 CELLPADDING=1 width=500 style="word-wrap: break-word;"> 
+<TR VALIGN=TOP>
+<TD>
+<a href="../../../prompt_design_patterns/11_Mind_Mapping/slide/debate.jpg" class="image" title="Title"><img alt="" src="../../../prompt_design_patterns/11_Mind_Mapping/slide/debate.jpg" border="0" align=middle class="thumbimage" width=500 /></a>  
+</TD>
+</TR>
+</TABLE> 
+</p>
+    </td>
+    <td>
+      <ul>
+
+<font color=blue><h3>
+        <li><font color=red>Tree</font> shape
+        <li><font color=red>Hierarchical</font> <font color=red>tree</font> <font color=red>structure</font></li>
+        <li><font color=red>Nodes</font> and <font color=red>edges</font> <font color=red>define</font> the <font color=red>flow</font></li>
+</h3></font>
+      </ul>
+
+<p>
+<TABLE ALIGN=ABSLEFT BORDER=1 CELLSPACING=1 CELLPADDING=1 width=500 style="word-wrap: break-word;"> 
+<TR VALIGN=TOP>
+<TD>
+<a href="tot.jpg" class="image" title="Title"><img alt="" src="tot.jpg" border="0" align=middle class="thumbimage" width=500 /></a>  
+<h3><center><a href=https://cameronrwolfe.substack.com/p/tree-of-thoughts-prompting target=_blank>Tree of Thoughts Prompting</a></center></h3>
+</TD>
+</TR>
+</TABLE> 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Applications</td>
+    <td>
+      <ul>
+        <li><font color=red>Brainstorming</font></li>
+        <li><font color=red>Project</font> <font color=red>planning</font></li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><font color=red>Problem-solving</font></li>
+        <li><font color=red>Decision-making</font></li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+
+<!-- <h2> -->
+<UL>
+<!--
+<li>
+    <ul TYPE=circle>
+    <li>
+    </ul>
+<li>
+    <ul TYPE=circle>
+    <li>
+    </ul>
+-->
+</UL>
+<!-- </h2> -->
+<HR SIZE=3>
+<FONT size=4><STRONG> Notes: </FONT></STRONG>
+<UL>
+<!--REFERENCES
+<li>References
+    <ul TYPE=circle>
+    <li><a href="Example_URL" target=_blank>Example</a>
+    </ul>
+REFERENCES-->
+</UL>
+<P>
+<BR>
+</P>
+
+<!--
+<hr>
+<A HREF="overview.html">Back</A> |
+<A HREF="ssl_solution.html">Next</A>  
+<A HREF="overview.htm"><Img Src="http://egweb.mines.edu/eggn384/mon_feb_11/fllarrow.gif" ALT="Previous" WIDTH=24 HEIGHT=24></A>
+<A HREF="ssl_solution.htm"><Img Src="http://egweb.mines.edu/eggn384/mon_feb_11/flrarrow.gif" ALT="Next" WIDTH=24 HEIGHT=24></A>
+-->
+<hr>
+Last modified on:
+<script>
+var modifieddate=document.lastModified
+document.write(modifieddate)
+</script>
+
+<!--
+<script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-12780105-1']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); </script>
+
+
+<br>Powered by <a href=Example>Example</a>
+-->
+
+    <blockquote><pre><!-- use xmp?? -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </pre></blockquote> 
+</body>
+</html>

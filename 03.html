@@ -1,0 +1,324 @@
+ch 13. Self Consistency
+
+Objectives:
+(1) Master techniques to enhance AI's reasoning and problem-solving capabilities.
+
+
+
+<!--
+<html lang="zh-CN"> 
+-->
+<html>
+
+<head>
+<META HTTP-EQUIV="Context-Type" 
+ CONTEXT="text/html;charset=windows-1252"
+>
+<!--
+<meta name="description/generator" content=" " >
+<meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<title>Prompt Chaining vs. Chain of Thought Prompting</title>
+<style type="text/css"> .myLoadStyle { width:1px; height:1px; } </style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+<!-- inline spoiler http://www.jsblogstop.com/2011/04/add-spoilers-to-your-website.html -->
+<script src="http://jsblogstop-blogger-feed-tools.googlecode.com/svn/trunk/js-spoilers.js"></script>
+<style type='text/css'>
+ .block-spoiler { color: #993333; }
+        .block-spoiler-toggle { cursor: pointer;}
+ .inline-spoiler-toggle { cursor: pointer;}
+ .redac-text {
+   color: #000000;
+   background-color: #000000;
+ }
+ .redac-text:hover {
+   background-color: #ffffff;
+ }
+ div.spoiler-text {
+   display: none;
+   padding: 0px 10px;
+ }
+ span.spoiler-text {
+   display: none;
+   padding: 0px 5px;
+ }
+</style>
+
+
+<style>
+/*
+In this example, the first media query applies when the screen width is less than or equal to 768px (iPad portrait mode) and the second media query applies when the screen width is less than or equal to 1024px (iPad landscape mode). The orientation property is used to target the specific device orientation. The border-radius of the table cells is set to 10px in both cases, giving them a rounded appearance. You can adjust the max-width values and border-radius value to customize the behavior for your specific use case.
+*/
+/* Add a border-radius to table cells */
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Reduce the border-radius when the screen width is less than or equal to 768px (iPad portrait mode) */
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  td {
+    border-radius: 10px;
+  }
+}
+/* Reduce the border-radius when the screen width is less than or equal to 1024px (iPad landscape mode) */
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  td {
+    border-radius: 10px;
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<center><a href=""><h1>Prompt Chaining vs. Chain of Thought Prompting</h1></a></center>
+<!--
+
+<center>
+<div id="google_translate_element"></div><script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</center>
+
+
+
+<center>
+<div id="google_translate_element_en"></div>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: '{Language=en}',
+    sectionalNodeClassName: 'goog-trans-section',
+    controlNodeClassName: 'goog-trans-control',
+    background: '#f4fa58'
+  }, 'google_translate_element_en');
+}
+</script><script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
+</center>
+
+
+<center><h1>Example</h1></center>
+<center><a href="Example.jpg" class="image" title="Title"><img alt="" src="Example.jpg" height="300" width="400" border="0" align=middle class="thumbimage" /></a></center>
+<center><a href="Example.jpg" class="image" title="Title"><img alt="" src="Example.jpg" border="0" align=middle class="thumbimage" /></a></center>
+<a href="Example.jpg" class="image" title="Title"><img alt="" src="Example.jpg" border="0" align=middle class="thumbimage" /></a>
+-->
+
+<center>
+<table border=1 width=1000>
+  <tr>
+    <th>ID</th>
+    <th>Aspect</th>
+    <th><a href=../../prompt_design_patterns/10_Prompt_Chaining/slide/index_slide.html target=_blank>Prompt Chaining</a></th>
+    <th>Chain of Thought</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Definition</td>
+    <td>
+
+<font color=blue><h3>
+       <a href=../../prompt_design_patterns/10_Prompt_Chaining/slide/index_slide.html target=_blank><font color=red>Prompt</font> <font color=red>Chaining</font></a>: 
+      <ul>
+      <li>Involves connecting <font color=redd>multiple prompts</font> together where the <font color=red>output</font> of one <font color=red>prompt</font> is fed into the <font color=red>next one.</li>
+      </ul>
+</h3></font>
+    </td>
+    <td>
+<font color=blue><h3>
+        <font color=red>Chain</font> of <font color=red>Thought</font>: 
+      <ul>
+      <li>Involves using a <font color=redd>single prompt</font> to elicit a <font color=red>step-by-step reasoning</font> <font color=red>process</font>.</li>
+      </ul>
+</h3></font>
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Usage</td>
+    <td>
+<font color=blue><h3>
+    Used for complex <font color=red>tasks</font> that require <font color=redd>multiple steps</font> and <font color=redd>intermediate outputs</font>.</li>
+</h3></font>
+    </td>
+    <td>
+<font color=blue><h3>
+     Used for <font color=red>tasks</font> requiring <font color=redd>logical reasoning</font> and <font color=redd>problem-solving</font>.</li>
+</h3></font>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Advantage</td>
+    <td>
+<font color=blue><h3>
+        Allows for <font color=red>modularity</font> and <font color=red>reuse</font> of <font color=red>prompts</font>.</li>
+</h3></font>
+    </td>
+    <td>
+<font color=blue><h3>
+        Enhances <font color=red>clarity</font> and <font color=red>transparency</font> in <font color=red>reasoning</font> <font color=red>process</font>.</li>
+</h3></font>
+    </td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Example</td>
+    <td>
+<font color=blue><h3>
+      <ul>
+        <li><font color=redd>First</font> <font color=red>prompt</font>: Extract <font color=red>data</font>.
+        <li><font color=redd>Second</font> <font color=red>prompt</font>: Analyze <font color=red>data</font>.
+        <li><font color=redd>Third</font> <font color=red>prompt</font>: Generate <font color=red>report</font>.
+      </ul>
+</h3></font>
+    </td>
+    <td>
+<font color=blue><h3>
+      <ul>
+        <li><font color=red>Prompt</font>: Solve a <font color=red>math</font> <font color=red>problem</font> <font color=redd>step-by-step.</font>
+      </ul>
+</h3></font>
+    </td>
+  </tr>
+</table>
+
+</table>
+
+</center>
+
+<!-- <h2> -->
+<UL>
+<!--
+<li>
+    <ul TYPE=circle>
+    <li>
+    </ul>
+<li>
+    <ul TYPE=circle>
+    <li>
+    </ul>
+-->
+</UL>
+<!-- </h2> -->
+<HR SIZE=3>
+<FONT size=4><STRONG> Notes: </FONT></STRONG>
+<UL>
+<!--REFERENCES
+<li>References
+    <ul TYPE=circle>
+    <li><a href="Example_URL" target=_blank>Example</a>
+    </ul>
+REFERENCES-->
+</UL>
+<P>
+<BR>
+</P>
+
+<!--
+<hr>
+<A HREF="overview.html">Back</A> |
+<A HREF="ssl_solution.html">Next</A>  
+<A HREF="overview.htm"><Img Src="http://egweb.mines.edu/eggn384/mon_feb_11/fllarrow.gif" ALT="Previous" WIDTH=24 HEIGHT=24></A>
+<A HREF="ssl_solution.htm"><Img Src="http://egweb.mines.edu/eggn384/mon_feb_11/flrarrow.gif" ALT="Next" WIDTH=24 HEIGHT=24></A>
+-->
+<hr>
+Last modified on:
+<script>
+var modifieddate=document.lastModified
+document.write(modifieddate)
+</script>
+
+<!--
+<script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-12780105-1']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); </script>
+
+
+<br>Powered by <a href=Example>Example</a>
+-->
+
+    <blockquote><pre><!-- use xmp?? -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </pre></blockquote> 
+</body>
+</html>

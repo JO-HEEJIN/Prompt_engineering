@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Attack Defense</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .section {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Prompt Attack Defense</h1>
+    
+    <div class="section">
+        <h2>Definition</h2>
+        <p>The Prompt Attack Defense Pattern is a prompting technique that shields AI models from diverse prompt attacks, upholding their integrity and security.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Motivation</h2>
+        <p>As LLMs gain traction, their susceptibility to prompt attacks increases. Common attack types include Prompt Injection, Prompt Leaking, Goal Hijacking, and Context Leaking. Implementing defense mechanisms is crucial to ensure security and reliability.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Applicability</h2>
+        <p>This pattern is relevant for applications involving sensitive data, interactive systems, multi-user environments, and proprietary prompt structures. Ensuring compliance in regulated industries is another critical factor.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Defense Strategies</h2>
+        <ul>
+            <li><strong>Prompt Injection:</strong> Use response filtering, user education, and model training.</li>
+            <li><strong>Prompt Leaking:</strong> Implement stateless interactions, response filtering, and contextual prompts.</li>
+            <li><strong>Goal Hijacking:</strong> Enforce strict adherence to primary tasks and response filtering.</li>
+            <li><strong>Context Leaking:</strong> Apply stateless interactions, response filtering, and user education.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Implementation</h2>
+        <p>The Prompt Attack Defense Prompt Template ensures responses adhere to the primary task while preventing sensitive data exposure and adversarial manipulation.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Examples</h2>
+        <ul>
+            <li><strong>Customer Support Bot:</strong> Prevents unauthorized password disclosure.</li>
+            <li><strong>Content Generation:</strong> Blocks injection attempts that seek proprietary information.</li>
+            <li><strong>Research Tool:</strong> Avoids leaking past user queries.</li>
+            <li><strong>E-commerce Chatbot:</strong> Restricts inquiries into backend technologies.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Discussion</h2>
+        <p>The Prompt Attack Defense Pattern enhances security but requires continuous updates. While effective, it isn't foolproof. Over-sanitization and ongoing adversarial adaptation remain challenges.</p>
+    </div>
+</body>
+</html>
